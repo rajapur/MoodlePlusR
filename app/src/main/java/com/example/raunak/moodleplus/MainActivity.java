@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
 
     // json array response url
     //private String urlJsonArry = "http://api.androidhive.info/volley/person_array.json";
-    private String urlJsonObj = "http://10.192.13.234:8000/default/login.json?userid=cs5110300&password=shubham";
-    private String urlJsonArry = "http://10.192.13.234:8000/default/login.json?userid=cs5110300&password=shubham";
+    //private String urlJsonObj = "http://10.192.13.234:8000/default/login.json?userid=cs5110300&password=shubham";
+    //private String urlJsonArry = "http://10.192.13.234:8000/default/login.json?userid=cs5110300&password=shubham";
 
     private static String TAG = MainActivity.class.getSimpleName();
     private Button btnMakeObjectRequest, btnMakeArrayRequest;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 makeJsonArrayRequest();
             }
         });
-        /*editTextUsername = (EditText)findViewById(R.id.TFusername);
+        editTextUsername = (EditText)findViewById(R.id.TFusername);
         editTextPassword = (EditText)findViewById(R.id.TFpassword);
         username = editTextUsername.getText().toString();
         password = editTextPassword.getText().toString();
@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 getStringRequest(REGISTER_URL);
             }
-        });*/
+        });
 
 
     }
@@ -173,64 +173,7 @@ public class MainActivity extends AppCompatActivity {
         AppController.getInstance().addToRequestQueue(jsonObjReq);
     }
 
-    private void makeJsonArrayRequest() {
-        showpDialog();
-
-        JsonArrayRequest req = new JsonArrayRequest(urlJsonArry,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-
-                        try {
-                            // Parsing json array response
-                            // loop through each json object
-                            jsonResponse = "";
-                            for (int i = 0; i < response.length(); i++) {
-
-                                JSONObject person = (JSONObject) response
-                                        .get(i);
-
-                                String name = person.getString("name");
-                                String email = person.getString("email");
-                                JSONObject phone = person
-                                        .getJSONObject("phone");
-                                String home = phone.getString("home");
-                                String mobile = phone.getString("mobile");
-
-                                jsonResponse += "Name: " + name + "\n\n";
-                                jsonResponse += "Email: " + email + "\n\n";
-                                jsonResponse += "Home: " + home + "\n\n";
-                                jsonResponse += "Mobile: " + mobile + "\n\n\n";
-
-                            }
-
-                            txtResponse.setText(jsonResponse);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(getApplicationContext(),
-                                    "Error: " + e.getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                            txtResponse.setText(e.toString());
-                        }
-
-                        hidepDialog();
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_SHORT).show();
-                hidepDialog();
-            }
-        });
-
-        // Adding request to request queue
-        AppController.getInstance().addToRequestQueue(req);
-
-    }
+    
 
     private void showpDialog() {
         if (!pDialog.isShowing())
@@ -278,12 +221,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
