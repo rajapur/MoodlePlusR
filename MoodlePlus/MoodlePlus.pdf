@@ -1,0 +1,26 @@
+\documentclass{article}
+
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{lipsum}
+
+\begin{document}
+	\title{\textbf{MoodlePlus Design}}
+	\author{Vishavjeet Singh, Ankit Shubham, Raunak Lohiya}
+	\maketitle
+	
+	\textbf{Login Screen}
+	
+
+	This is the first screen a user gets on tapping the app icon. The user has to provide correct username and password to log in. There is also a remember me option so that if the user doesn't log out then she does not have to log in the next time.
+	
+
+				
+				
+	
+\end{document}
+
+	
